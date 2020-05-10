@@ -69,7 +69,6 @@
           }
           })
           .then(({data}) => {
-            console.log(data);
             localStorage.setItem('token',data)
             this.$emit('changeIsLogin', true)
              const Toast = this.$swal.mixin({
@@ -91,7 +90,6 @@
           })
           .catch(({response}) => {
             let errors = ""
-            console.log(response);
             response.data.forEach(el => {
               errors+= el + '\n'
             })

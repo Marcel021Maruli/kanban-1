@@ -25,16 +25,10 @@ class CategoryController {
         }]
       })
       .then(data => {
-        // console.log(req.user.id);
-        // data.forEach(element => {
-
-        // });
-        // data.Kanbans.filter(el => UserId == req.user.id)
         res.status(200).json(data)
       })
       .catch(err => {
-        res.send(err)
-        // next(err)
+        next(err)
       })
   }
 

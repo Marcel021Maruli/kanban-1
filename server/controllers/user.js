@@ -8,14 +8,12 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 class UserController {
   static googleLogin(req, res, next) {
     const { id_token } = req.body
-    console.log(id_token);
     async function verify() {
       const ticket = await client.verifyIdToken({
         idToken: id_token,
         audience: process.env.GOOGLE_CLIENT_ID,
       });
       const payload = ticket.getPayload();
-      console.log(payload);
       User
         .findOne({
           where: {
@@ -71,10 +69,7 @@ class UserController {
               msg: 'You are not registered yet.'
             }
           }
-          console.log("data gak?", data);
           const compare = bcrypt.compare(password, data.password)
-          console.log(compare, 'compare nihhh');
-
           if (data && compare) {
             const token = jwt.sign({
               id: data.id,
@@ -84,8 +79,6 @@ class UserController {
             res.status(200).json(token)
           }
           else {
-            console.log('ato sini??');
-
             throw {
               error: 400,
               msg: 'Wrong email/password.'
@@ -93,9 +86,6 @@ class UserController {
           }
         })
         .catch(err => {
-          console.log(err, "eallll");
-
-          // res.send(err)
           next(err)
         })
     } else {

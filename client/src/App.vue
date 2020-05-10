@@ -25,7 +25,6 @@ export default {
     Title
   },
   beforeMount() {
-    // console.log(this.token);
     if (this.token){
       this.isLogin = true
       this.showLogin = false
@@ -52,8 +51,6 @@ export default {
       return this.isLogin = status
     },
     changeShowLogReg(status){
-        console.log('masuk sini gakkk?');  
-      console.log(this.showLogin);
       return this.showLogin = status
     },
     logoutClient(){

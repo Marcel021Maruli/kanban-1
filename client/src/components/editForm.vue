@@ -51,9 +51,7 @@ export default {
       }
     },
   methods: {
-    updateData() {
-      // console.log(this.selected, this.dataEdit.name);
-      
+    updateData() {      
       this.$emit('updateThis', {id: this.dataEdit.id, CategoryId: this.selected, name: this.dataEdit.name})
     },
     closeForm() {

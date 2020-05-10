@@ -69,7 +69,6 @@ import GoogleLogin from 'vue-google-login';
     methods: {
       onSuccess(googleUser) {
           var id_token = googleUser.getAuthResponse().id_token;
-          // console.log(id_token, "id TOKEN!!!");
           this.$axios({
             method: "POST",
             url: '/users/googleLogin',
@@ -101,7 +100,6 @@ import GoogleLogin from 'vue-google-login';
           })
           })
           .catch(({response})=>{
-               // console.log(response.data.msg);
           if (response) {
             this.$swal.fire({ title: `${response.data.msg}`, icon:'error'})
           }
@@ -120,7 +118,6 @@ import GoogleLogin from 'vue-google-login';
           }
         })
         .then(({data}) => {
-          // console.log(result.response.data);
           this.emailLog=""
           this.passwordLog=""
           this.isLogin = true
@@ -144,16 +141,13 @@ import GoogleLogin from 'vue-google-login';
           })
         })
         .catch(({response}) => {
-          // console.log(response.data.msg);
         if (response) {
           this.$swal.fire({ title: `${response.data.msg}`, icon:'error'})
           }
         })
       },
       
-      showRegister(){
-        
-        console.log('masuk gakkk?');
+      showRegister(){        
         this.$emit('showRegisterPage', false)
       }
 

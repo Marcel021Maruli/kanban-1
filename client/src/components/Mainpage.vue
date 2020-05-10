@@ -37,7 +37,6 @@ export default {
         headers: {token: this.token}
       })
       .then(data => {
-        console.log(data, 'data');
         this.dataKanban = data.data
       })
       .catch(err => {
@@ -45,12 +44,10 @@ export default {
       })
     },
     dataUpdate(data){
-      // console.log(data);
       this.isEdit = true
       this.dataEdit = data
     },
     deleteTask(id){
-      console.log("masukk gakk??");
       axios({
         url: this.url+'/kanbans/'+id,
         method: 'DELETE',
@@ -83,9 +80,7 @@ export default {
         this.setEditForm()
         this.getKanban()
       })
-      // console.log(data.id);
       .catch(({response}) => {
-        console.log(response);
         this.$swal.fire({ title: `${response.data}`, icon:'error'})
         this.getKanban()
       })

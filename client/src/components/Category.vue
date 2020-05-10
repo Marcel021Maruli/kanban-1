@@ -40,7 +40,6 @@ export default {
     addData(data){
       let category = data.categoryId
       let text = data.text
-      console.log(category);
       this.$axios({
         url: '/kanbans',
         method: 'POST',
@@ -57,7 +56,6 @@ export default {
           }
       })
       .catch(({response}) => {
-        console.log(response.data);
         if (data) {
           this.$swal.fire({ title: response.data, icon:'error'})
           }
